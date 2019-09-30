@@ -2,6 +2,7 @@
 assignment 1 template
 *********/
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <fstream>
 #include <time.h>
@@ -114,18 +115,24 @@ int main()
 			cout << "Enter the coordinates of your second card here: " << endl;
 			cin >> x2 >> endl;
 			cin >> y2 >> endl;
-			ShowCards(arr, Booleans, x1, y1, x2, y2);
+			
 		// If the values of the two coordinates match :
 		//     say that a match has been found and flip the cards over forever
 
 			// add your code here
-			
+			if (arr [x1][y1] == arr[x2][y2]){
+			cout << "A match has been found!" << endl;
+			ShowCards(arr, Booleans, x1, y1, x2, y2);
+			}
 
 		// else :
 		//     temporarily flip over the cards to show the user the values, then flip them over again.
 
 			// add your code here
-
+			else{
+			cout << "No match" << endl;
+			ShowCards(arr, Booleans, x1, y1, x2, y2);
+			}
 
 	// 5) Save the user’s name and how many turns it took to win the game into an output text file. If he quits
 	// before winning save “Don’t give up” message in the file.
@@ -141,13 +148,30 @@ int main()
 void ShowCards(int cards[][LENGTH], bool faceup[][LENGTH], int a1, b1, a2, b2) {
 	// add your code here
 	string show;
-	cout << 
 	if (cards[a1][b1] == cards[a2][b2]){
 	faceup[a1][b1] = TRUE;
 	faceup[a2][b2] = TRUE;
-	
-}
 
+	for(int i = 0; i < 17; i++){
+	 for (int j = 0; j < 17; j++){
+		 if (faceup[i][j] == TRUE){
+			cout << cards[i][j] << setw(5);	 
+		 }
+		 else
+			 cout << "*" << setw(5);
+	 }
+	 }
+	}
+	else
+	for(int i = 0; i < 17; i++){
+	 for (int j = 0; j < 17; j++){
+		 if (faceup[i][j] == TRUE){
+			cout << cards[i][j] << setw(5);	 
+		 }
+		 else
+			 cout << "*" << setw(5);
+	 }
+	}
 }
 
 // you may have more functions
