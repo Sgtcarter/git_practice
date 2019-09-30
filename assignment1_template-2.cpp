@@ -13,7 +13,7 @@ using namespace std;
 // Function prototypes
 
 void InitializeCards(int cards[][LENGTH]);
-void ShowCards(int cards[][LENGTH], bool faceup[][LENGTH], int a1, b1 , a2 , b2);
+void ShowCards(int cards[][LENGTH], bool faceup[][LENGTH], int a1, int b1 , int a2 , int b2);
 // you may have more function prototypes
 // ======================
 // InitializeCards
@@ -75,59 +75,66 @@ int main()
 		// add your code here
 	cout << "Welcome to the memory game! Please enter your full name: " << endl;
 	cin >> name;
-
+    
 	// 2) Create a two 2D array that will hold the number for each card. Pass it to 
 	// 	  InitializeCards function. 
 
 		// add your code here
-		int arr[4][LENGTH] = InitializeCards(arr);
+		int arr[4][LENGTH];
+	    InitializeCards(arr);
+	    
 
 	// 3) Create the 2D array of Booleans that represents whether or not the card is matched. 
-	// 	  This should be initialized to all FALSE at first. 
+	// 	  This should be initialized to all 0 at first. 
 
 		// add your code here
-		bool Booleans[][LENGTH];
-		Booleans[0][0] = FALSE; Booleans[0][1] = FALSE;//   1  1  2  2
-		Booleans[0][2] = FALSE; Booleans[0][3] = FALSE;
-		Booleans[1][0] = FALSE; Booleans[1][1] = FALSE;//   3  3  4  4
-		Booleans[1][2] = FALSE; Booleans[1][3] = FALSE;
-		Booleans[2][0] = FALSE; Booleans[2][1] = FALSE;//   5  5  6   6
-		Booleans[2][2] = FALSE; Booleans[2][3] = FALSE;
-		Booleans[3][0] = FALSE; Booleans[3][1] = FALSE;//   7  7  8   8
-		Booleans[3][2] = FALSE; Booleans[3][3] = FALSE;
+		bool Booleans[LENGTH][LENGTH];
+		Booleans[0][0] = 0; Booleans[0][1] = 0;//   1  1  2  2
+		Booleans[0][2] = 0; Booleans[0][3] = 0;
+		Booleans[1][0] = 0; Booleans[1][1] = 0;//   3  3  4  4
+		Booleans[1][2] = 0; Booleans[1][3] = 0;
+		Booleans[2][0] = 0; Booleans[2][1] = 0;//   5  5  6   6
+		Booleans[2][2] = 0; Booleans[2][3] = 0;
+		Booleans[3][0] = 0; Booleans[3][1] = 0;//   7  7  8   8
+		Booleans[3][2] = 0; Booleans[3][3] = 0;
 
 	// 4) while the game is not over :
-		while (Booleans[0][0] != FALSE && Booleans[0][1] != FALSE 
-		&& Booleans[0][2] != FALSE && Booleans[0][3] != FALSE
-		&& Booleans[1][0] != FALSE && Booleans[1][1] != FALSE
-		&& Booleans[1][2] != FALSE && Booleans[1][3] != FALSE
-		&& Booleans[2][0] != FALSE && Booleans[2][1] != FALSE
-		&& Booleans[2][2] != FALSE && Booleans[2][3] != FALSE
-		&& Booleans[3][0] != FALSE && Booleans[3][1] != FALSE
-		&& Booleans[3][2] != FALSE && Booleans[3][3] != FALSE) {
+		while (Booleans[0][0] == 0 && Booleans[0][1] == 0 
+		&& Booleans[0][2] == 0 && Booleans[0][3] == 0
+		&& Booleans[1][0] == 0 && Booleans[1][1] == 0
+		&& Booleans[1][2] == 0 && Booleans[1][3] == 0
+		&& Booleans[2][0] == 0 && Booleans[2][1] == 0
+		&& Booleans[2][2] == 0 && Booleans[2][3] == 0
+		&& Booleans[3][0] == 0 && Booleans[3][1] == 0
+		&& Booleans[3][2] == 0 && Booleans[3][3] == 0) {
 		// Display the current state of the game board. Remember that non-matched pairs should be "facedown"
 		// and that matched pairs should be "faceup"
-
+		
 			// add your code here
-			for(int i = 0; i < 17; i++){
-		 	for (int j = 0; j < 17; j++){
-			 if (Booleans[i][j] == TRUE){
+			for(int i = 0; i < 4; i++){
+		 	for (int j = 0; j < 4; j++){
+			 if (Booleans[i][j] == 1){
 			cout << arr[i][j] << setw(5);	 
 		 }
 		 else
 			 cout << "*" << setw(5);
+		 	}
+			}
+			
 
 		// Prompt the user to enter the coordinates of two cards
 		// Note: user can choose to quit
 
 			// add your code here
 			cout << "Enter the coordinates of your first card here: " << endl;
-			cin >> x1 >> endl;
-			cin >> y1 >> endl;
+			cin >> x1; 
+			
+			cin >> y1; 
+			
 
 			cout << "Enter the coordinates of your second card here: " << endl;
-			cin >> x2 >> endl;
-			cin >> y2 >> endl;
+			cin >> x2;
+			cin >> y2;
 			
 		// If the values of the two coordinates match :
 		//     say that a match has been found and flip the cards over forever
@@ -154,21 +161,24 @@ int main()
 		// add your code here
 }
 
+
+
 // ======================
 // ShowCards
-// Generates a display on the screen.  If faceup=false,
+// Generates a display on the screen.  If faceup=0,
 // an * is output, otherwise the card in that slot is output.
 // ======================
-void ShowCards(int cards[][LENGTH], bool faceup[][LENGTH], int a1, b1, a2, b2) {
+void ShowCards(int cards[][LENGTH], bool faceup[][LENGTH], int a1, int b1, int a2, int b2) 
+{
+    
 	// add your code here
-	string show;
 	if (cards[a1][b1] == cards[a2][b2]){
-	faceup[a1][b1] = TRUE;
-	faceup[a2][b2] = TRUE;
+	faceup[a1][b1] = 1;
+	faceup[a2][b2] = 1;
 
-	for(int i = 0; i < 17; i++){
-	 for (int j = 0; j < 17; j++){
-		 if (faceup[i][j] == TRUE){
+	for(int i = 0; i < 4; i++){
+	 for (int j = 0; j < 4; j++){
+		 if (faceup[i][j] == 1){
 			cout << cards[i][j] << setw(5);	 
 		 }
 		 else
@@ -176,10 +186,10 @@ void ShowCards(int cards[][LENGTH], bool faceup[][LENGTH], int a1, b1, a2, b2) {
 	 }
 	 }
 	}
-	else
-	for(int i = 0; i < 17; i++){
-	 for (int j = 0; j < 17; j++){
-		 if (faceup[i][j] == TRUE){
+    else {
+	for(int i = 0; i < 4; i++){
+	 for (int j = 0; j < 4; j++){
+		 if (faceup[i][j] == 1){
 			cout << cards[i][j] << setw(5);	 
 		 }
 		 else
@@ -187,5 +197,8 @@ void ShowCards(int cards[][LENGTH], bool faceup[][LENGTH], int a1, b1, a2, b2) {
 	 }
 	}
 }
+}
+
+
 
 // you may have more functions
