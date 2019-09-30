@@ -97,12 +97,25 @@ int main()
 		Booleans[3][2] = FALSE; Booleans[3][3] = FALSE;
 
 	// 4) while the game is not over :
-
+		while (Booleans[0][0] != FALSE && Booleans[0][1] != FALSE 
+		&& Booleans[0][2] != FALSE && Booleans[0][3] != FALSE
+		&& Booleans[1][0] != FALSE && Booleans[1][1] != FALSE
+		&& Booleans[1][2] != FALSE && Booleans[1][3] != FALSE
+		&& Booleans[2][0] != FALSE && Booleans[2][1] != FALSE
+		&& Booleans[2][2] != FALSE && Booleans[2][3] != FALSE
+		&& Booleans[3][0] != FALSE && Booleans[3][1] != FALSE
+		&& Booleans[3][2] != FALSE && Booleans[3][3] != FALSE) {
 		// Display the current state of the game board. Remember that non-matched pairs should be "facedown"
 		// and that matched pairs should be "faceup"
 
 			// add your code here
-
+			for(int i = 0; i < 17; i++){
+		 	for (int j = 0; j < 17; j++){
+			 if (Booleans[i][j] == TRUE){
+			cout << arr[i][j] << setw(5);	 
+		 }
+		 else
+			 cout << "*" << setw(5);
 
 		// Prompt the user to enter the coordinates of two cards
 		// Note: user can choose to quit
@@ -133,6 +146,7 @@ int main()
 			cout << "No match" << endl;
 			ShowCards(arr, Booleans, x1, y1, x2, y2);
 			}
+		}
 
 	// 5) Save the user’s name and how many turns it took to win the game into an output text file. If he quits
 	// before winning save “Don’t give up” message in the file.
