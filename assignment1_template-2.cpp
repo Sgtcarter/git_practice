@@ -128,15 +128,25 @@ int main()
 		// Note: user can choose to quit
 
 			// add your code here
+			do{
+			cout << "Please enter two different cards. Enter -1 to quit the program." << endl;
 			cout << "Enter the coordinates of your first card here: " << endl;
 			cin >> x1; 
-			
+			if (x1 == -1 || x2 == -1 || y1 == -1 || y2 == -1)
+			    return 0;
 			cin >> y1; 
-			
+			if (x1 == -1 || x2 == -1 || y1 == -1 || y2 == -1)
+			    return 0;
 
 			cout << "Enter the coordinates of your second card here: " << endl;
 			cin >> x2;
+			if (x1 == -1 || x2 == -1 || y1 == -1 || y2 == -1)
+			    return 0;
 			cin >> y2;
+			if (x1 == -1 || x2 == -1 || y1 == -1 || y2 == -1)
+			    return 0;
+			}
+			while(x1 != x2 && y1 != y2);
 			
 		// If the values of the two coordinates match :
 		//     say that a match has been found and flip the cards over forever
@@ -172,7 +182,15 @@ int main()
 // ======================
 void ShowCards(int cards[][LENGTH], bool faceup[][LENGTH], int a1, int b1, int a2, int b2) 
 {
-    
+        bool temp[4][4];
+    	temp[0][0] = 0; temp[0][1] = 0;
+		temp[0][2] = 0; temp[0][3] = 0;
+		temp[1][0] = 0; temp[1][1] = 0;
+		temp[1][2] = 0; temp[1][3] = 0;
+		temp[2][0] = 0; temp[2][1] = 0;
+		temp[2][2] = 0; temp[2][3] = 0;
+		temp[3][0] = 0; temp[3][1] = 0;
+		temp[3][2] = 0; temp[3][3] = 0;
 	// add your code here
 	
 	if (cards[a1][b1] == cards[a2][b2]){
@@ -192,7 +210,7 @@ void ShowCards(int cards[][LENGTH], bool faceup[][LENGTH], int a1, int b1, int a
 	}
     else {
          cout << "--------------" << endl;
-        bool temp[4][4];
+       
         temp[a1][b1] = 1;
         temp[a2][b2] = 1;
          
