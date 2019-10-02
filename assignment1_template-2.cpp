@@ -69,6 +69,7 @@ int main()
 {
 	string name;
 	int x1 , y1, x2, y2;
+	int turns = 0;
 	
 	// 1) Welcome the user and ask him to enter his full name.
 
@@ -165,12 +166,15 @@ int main()
 			cout << "No match" << endl;
 			ShowCards(arr, Booleans, x1, y1, x2, y2);
 			}
+            turns += 1; 
 		}
 
 	// 5) Save the user’s name and how many turns it took to win the game into an output text file. If he quits
 	// before winning save “Don’t give up” message in the file.
 
 		// add your code here
+		cout << "Congradulations you won! It took you: " << turns << "turns to beat the game!" << endl;
+		return 0;
 }
 
 
