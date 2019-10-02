@@ -99,18 +99,19 @@ int main()
 		Booleans[3][2] = 0; Booleans[3][3] = 0;
 
 	// 4) while the game is not over :
-		while (Booleans[0][0] == 0 && Booleans[0][1] == 0 
-		&& Booleans[0][2] == 0 && Booleans[0][3] == 0
-		&& Booleans[1][0] == 0 && Booleans[1][1] == 0
-		&& Booleans[1][2] == 0 && Booleans[1][3] == 0
-		&& Booleans[2][0] == 0 && Booleans[2][1] == 0
-		&& Booleans[2][2] == 0 && Booleans[2][3] == 0
-		&& Booleans[3][0] == 0 && Booleans[3][1] == 0
-		&& Booleans[3][2] == 0 && Booleans[3][3] == 0) {
+		while (Booleans[0][0] == 0 || Booleans[0][1] == 0 
+		|| Booleans[0][2] == 0 || Booleans[0][3] == 0
+		|| Booleans[1][0] == 0 || Booleans[1][1] == 0
+		|| Booleans[1][2] == 0 || Booleans[1][3] == 0
+		|| Booleans[2][0] == 0 || Booleans[2][1] == 0
+		|| Booleans[2][2] == 0 || Booleans[2][3] == 0
+		|| Booleans[3][0] == 0 || Booleans[3][1] == 0
+		|| Booleans[3][2] == 0 || Booleans[3][3] == 0) {
 		// Display the current state of the game board. Remember that non-matched pairs should be "facedown"
 		// and that matched pairs should be "faceup"
 		
 			// add your code here
+			 cout << "--------------" << endl;
 			for(int i = 0; i < 4; i++){
 		 	for (int j = 0; j < 4; j++){
 			 if (Booleans[i][j] == 1){
@@ -119,6 +120,7 @@ int main()
 		 else
 			 cout << "*" << setw(5);
 		 	}
+		 	cout << endl;
 			}
 			
 
@@ -172,10 +174,11 @@ void ShowCards(int cards[][LENGTH], bool faceup[][LENGTH], int a1, int b1, int a
 {
     
 	// add your code here
+	
 	if (cards[a1][b1] == cards[a2][b2]){
 	faceup[a1][b1] = 1;
 	faceup[a2][b2] = 1;
-
+    cout << "--------------" << endl;
 	for(int i = 0; i < 4; i++){
 	 for (int j = 0; j < 4; j++){
 		 if (faceup[i][j] == 1){
@@ -184,21 +187,28 @@ void ShowCards(int cards[][LENGTH], bool faceup[][LENGTH], int a1, int b1, int a
 		 else
 			 cout << "*" << setw(5);
 	 }
+	 cout << endl;
 	 }
 	}
     else {
+         cout << "--------------" << endl;
+        bool temp[4][4];
+        temp[a1][b1] = 1;
+        temp[a2][b2] = 1;
+         
 	for(int i = 0; i < 4; i++){
 	 for (int j = 0; j < 4; j++){
 		 if (faceup[i][j] == 1){
 			cout << cards[i][j] << setw(5);	 
 		 }
+		 else if(temp[i][j] == 1)
+		    cout << cards[i][j] << setw(5);
 		 else
 			 cout << "*" << setw(5);
 	 }
+	 cout << endl;
 	}
+	temp[a1][b1] = 0;
+    temp[a2][b2] = 0;
 }
 }
-
-
-
-// you may have more functions
