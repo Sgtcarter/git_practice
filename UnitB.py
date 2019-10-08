@@ -50,8 +50,9 @@ Medium = int(input())
 print("How many large boxes do you need?")
 Large = int(input())
 
-print('{} {:>5} {:>10} {:>10}'.format('SIZE', 'QTY', 'COST PER BOX', 'TOTALS'))
-
+print('{} {:>5} {:>15} {:>10}'.format('SIZE', 'QTY', 'COST PER BOX', 'TOTALS'))
+print('{} {:>3} {:>13} {:>12}'.format('Small', Small, SMALLCST, Small * SMALLCST))
+print('{} {:>2} {:>13} {:>12}'.format('Medium', Medium, MEDIUMCST, round(Medium * MEDIUMCST, 2)))
 
 
 
