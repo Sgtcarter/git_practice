@@ -1,4 +1,3 @@
-
 #String Type Test
 
 
@@ -18,4 +17,9 @@ print(haiku)
 #Slicing a string
 
 quote = "And now for something completely different"
-print(quote[])
+print(quote[0:6])
+print(quote[-4:])
+print(quote[14:16])
+print(quote[0::2])
+print(quote[::-1])
+
